@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
+
 
 app = Flask(__name__)
 
@@ -11,5 +12,12 @@ done = ['Task 1', 'Task 2', 'Task 3']
 def index():
     return render_template('index.html', to_do=to_do, doing=doing, done=done)
 
-if __name__ == ('__main__'):
+@app.route('/add', methods=['POST'])
+def add_task():
+    new_task = request.form.get('newTask')
+    if new_task:
+        to_do.append(new_task)
+    return redirect(url_for('index'))
+
+if __name__ == '__main__':
     app.run(debug=True)
