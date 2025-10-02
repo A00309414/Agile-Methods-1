@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <title>Project Tracker</title>
 </head>
+
 <body>
     <p>hello</p>
     <!--task form-->
-    <form method = "post" action ="{{url_for('add_task')}}">
-        <label for = "newtask">Add Task:</label>
-        <input type = "text" id = "newTask" name ="newTask" required>
-        <button type = "submit">Add</button>
+    <form method="post" action="{{url_for('add_task')}}">
+        <label for="newtask">Add Task:</label>
+        <input type="text" id="newTask" name="newTask" required>
+        <button type="submit">Add</button>
     </form>
-    <section><h2>To Do</h2>
+    <section>
+        <h2>To Do</h2>
         <ul>
-            {%for task in to_do %}
-            <input = "checkbox" id="{{loop.index}}" name = "taskCheckbox" value = "{{loop.index}}"
-            <label for ="{{loop.index}}">{{task}}</label>
-              
-                {% endfor %}
+            {% for task in to_do %}
+                <input type="checkbox" id="{{ loop.index }}" name="taskCheckbox" value="{{ loop.index }}" method="post" action="{{ url_for('move_tasks')}}">
+                <label for="{{ loop.index }}">{{ task }}</label>
+            {% endfor %}
         </ul>
-        </section>
-    <section><h2>Doing</h2>
-                <ul>
+    </section>
+    <section>
+        <h2>Doing</h2>
+        <ul>
             {%for task in doing %}
-                <li>{{task}}</li>
-                {% endfor %}
+            <li>{{task}}</li>
+            {% endfor %}
         </ul>
-        </section>
-    <section><h2>Done</h2>
-                <ul>
+    </section>
+    <section>
+        <h2>Done</h2>
+        <ul>
             {%for task in done %}
-                <li>{{task}}</li>
-                {% endfor %}
+            <li>{{task}}</li>
+            {% endfor %}
         </ul>
-        </section>
-<!-- Can be removed if JavaScript is not needed for the homepage! -->
-<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    </section>
+    <!-- Can be removed if JavaScript is not needed for the homepage! -->
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
+
 </html>
