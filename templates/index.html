@@ -8,11 +8,27 @@
 </head>
 <body>
     <p>hello</p>
+    <!--task form-->
     <section><h2>To Do</h2>
+        <ul>
+            {%for task in to_do %}
+                <li>{{task}}</li>
+                {% endfor %}
+        </ul>
         </section>
     <section><h2>Doing</h2>
+                <ul>
+            {%for task in doing %}
+                <li>{{task}}</li>
+                {% endfor %}
+        </ul>
         </section>
     <section><h2>Done</h2>
+                <ul>
+            {%for task in done %}
+                <li>{{task}}</li>
+                {% endfor %}
+        </ul>
         </section>
 <!-- Can be removed if JavaScript is not needed for the homepage! -->
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
