@@ -17,7 +17,9 @@
     <section><h2>To Do</h2>
         <ul>
             {%for task in to_do %}
-                <li>{{task}}</li>
+            <input = "checkbox" id="{{loop.index}}" name = "taskCheckbox" value = "{{loop.index}}"
+            <label for ="{{loop.index}}">{{task}}</label>
+              
                 {% endfor %}
         </ul>
         </section>
